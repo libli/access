@@ -5,6 +5,6 @@ if [ ! -n "$1" ] ;then
   exit 1;
 fi
 
-docker build -t libli/zap:0.1 .
+docker build --platform linux/amd64 -t libli/access:latest -t libli/access:0.1 .
 docker login -u libli -p $1
-docker push libli/zap:0.1
+docker push libli/access -a

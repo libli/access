@@ -6,8 +6,8 @@ RUN curl https://get.acme.sh | sh -s email=chris98276@gmail.com
 # 开启自动升级
 RUN /root/.acme.sh/acme.sh --upgrade --auto-upgrade
 COPY entrypoint.sh /entrypoint.sh
-# 把nginx目录下的所有n配置文件复制到容器中的nginx配置下
-COPY nginx /etc/nginx/conf.d
+# 把nginx目录下的所有配置文件复制到容器中的nginx配置下
+COPY nginx /etc/nginx/conf.d/
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80

@@ -6,11 +6,11 @@ mkdir -p /etc/pki/nginx/private/
 # 需要先启动nginx, 否则acme.sh 跑 reloadcmd 时会失败。如果是第一次跑由于没cert会跑失败。
 service nginx start
 
-/root/.acme.sh/acme.sh --issue --dns dns_dp -d zaptiah.com -d *.zaptiah.com
+/root/.acme.sh/acme.sh --issue --dns dns_dp -d $DP_DOMAIN -d *.$DP_DOMAIN
 
-/root/.acme.sh/acme.sh --install-cert -d zaptiah.com \
---key-file       /etc/pki/nginx/private/zaptiah.com.key  \
---fullchain-file /etc/pki/nginx/zaptiah.com.crt \
+/root/.acme.sh/acme.sh --install-cert -d $DP_DOMAIN \
+--key-file       /etc/pki/nginx/private/$DP_DOMAIN.key  \
+--fullchain-file /etc/pki/nginx/$DP_DOMAIN.crt \
 --reloadcmd     "service nginx force-reload"
 
 # 再次启动一次，避免第一次启动nginx时没启动成功
