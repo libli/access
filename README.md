@@ -32,8 +32,9 @@ export DP_DOMAIN=******
 docker run --name=access -d --restart=unless-stopped \
   -p 80:80 -p 443:443 \
   -v /root/ssl/nginx:/etc/pki/nginx \
-  -v /root/ssl/acme/$DP_DOMAIN:/root/.acme.sh/$DP_DOMAIN_ecc \
+  -v /root/ssl/acme/zaptiah.com:/root/.acme.sh/zaptiah.com_ecc \
   -e DP_Id=$DP_ID \
   -e DP_Key=$DP_KEY \
-  libli/access:0.1
+  -e DP_Domain=$DP_DOMAIN \
+  libli/access:latest
 ```

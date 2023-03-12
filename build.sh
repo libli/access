@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -n "$1" ] ;then
-  echo "you must enter docker tocken"
+  echo "you must enter docker token"
   exit 1;
 fi
 
