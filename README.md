@@ -1,5 +1,15 @@
 # 网站接入层+SSL
 
+使用场景描述，一般个人使用，会一个服务器上跑多个 http 协议的 docker，可能每个 docker 都要用不同的端口对外提供服务。如果想让这些 docker 都使用 https 协议，配置较麻烦。
+
+通过本容器，可以解决通过不同的三级域名，以 https 协议标准的 443 端口，访问不同的 docker，如 alist, discuz, wordpress, Cloudreve等。
+
+所有域名的 https 证书都是全自动更新的。新增一个容器只需要放一个 nginx config 文件即可。
+
+有其它类似的镜像，比如 https://github.com/nginx-proxy/nginx-proxy 以及 https://github.com/Neilpang/letsproxy
+
+但这些都太重了，依赖非常多。
+
 特性：
 1. nginx做接入层，提供反向代理，适合一个服务器配置多个域名
 2. 全站 https，自动使用 acme.sh 申请证书及更新
