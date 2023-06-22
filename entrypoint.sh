@@ -12,4 +12,7 @@ $HOME/.acme.sh/acme.sh --install-cert -d $DP_Domain \
 --fullchain-file /etc/pki/nginx/$DP_Domain.crt \
 --reloadcmd     "service nginx force-reload"
 
+# 启动cron服务
+service cron start
+
 nginx -g "daemon off;"
