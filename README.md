@@ -143,7 +143,6 @@ docker restart access
 1. 获取global api key: https://dash.cloudflare.com/profile/api-tokens
 2. 运行容器：
 ```bash
-```
 docker run --name=access -d --restart=unless-stopped \
 --network=web_network \
 -p 80:80 -p 443:443 \
@@ -156,5 +155,4 @@ docker run --name=access -d --restart=unless-stopped \
 -e DP_Domain=$DP_DOMAIN \
 -e ACME_Email=$ACME_EMAIL \
 libli/access:latest
-```
 ```
