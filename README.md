@@ -138,3 +138,23 @@ docker restart access
 9. DNSPod 上添加 CNAME 记录，将 alist.mydomain.com 指向服务器 IP，
 
 这样就可以通过https://alist.mydomain.com 访问 alist 了。以后有新的容器，如wordpress, discuz等，只需要在 nginx 配置文件中配置反向代理，然后重启反向代理容器即可。
+
+### 支持cloudflare
+1. 获取global api key: https://dash.cloudflare.com/profile/api-tokens
+2. 运行容器：
+```bash
+```
+docker run --name=access -d --restart=unless-stopped \
+--network=web_network \
+-p 80:80 -p 443:443 \
+-v /data/access/nginx-config:/etc/nginx/conf.d \
+-v /data/access/nginx-ssl:/etc/pki/nginx \
+-v /data/access/acme-ssl:/acmeconfig \
+-e DNS_PROVIDER=cloudflare \
+-e CF_Key=$CF_KEY \
+-e CF_Email=$CF_EMAIL \
+-e DP_Domain=$DP_DOMAIN \
+-e ACME_Email=$ACME_EMAIL \
+libli/access:latest
+```
+```
